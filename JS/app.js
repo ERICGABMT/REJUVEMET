@@ -14,7 +14,7 @@ function agregarUsuario() {
       // Debug: Mostrar datos antes de enviarlos
       console.log("Enviando datos:", { nombre, apellidos, domicilio, edad, telefono, contraseña, alergias });
 
-      fetch("http://localhost:8080/registrar", {
+      fetch("http://localhost:3000/registrar", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ nombre, apellidos, domicilio, edad, telefono, contraseña, alergias })
@@ -44,7 +44,7 @@ function agregarUsuario() {
             return;
         }
     
-        fetch("http://localhost:8080/iniciar_sesion", {
+        fetch("http://localhost:3000/iniciar_sesion", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ contraseña })
