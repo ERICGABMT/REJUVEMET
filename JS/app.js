@@ -36,7 +36,7 @@ function agregarUsuario() {
       });
     }//Fin de agregar usuario-----------------------------------------------------------------------------------------------------
 
-    /*function iniciarSesion() {
+    function iniciarSesion() {
         let contraseña = document.getElementById("contraseña").value.trim();
     
         if (!contraseña) {
@@ -69,5 +69,5 @@ function agregarUsuario() {
             console.error("Error en fetch:", error);
             alert("Hubo un problema al conectar con el servidor.");
         });
-    }*/
+    }
     
