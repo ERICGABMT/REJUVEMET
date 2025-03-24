@@ -27,7 +27,7 @@ if (!process.env.DB_HOST || !process.env.DB_USER || !process.env.DB_PASSWORD || 
     });
 
 
-// Conectar con MySQL
+// Conectar con MySQL--------------------------------------------------------------------------------------------------------
 db.connect((err) => {
     if (err) {
         console.error("Error conectando a la base de datos:", err);
@@ -36,17 +36,41 @@ db.connect((err) => {
     }
 });
 
-// Ruta para registrar un usuario
+// Ruta para registrar un usuario---------------------------------------------------------------------------------------------
 app.post("/registrar", (req, res) => {
-    const { nombre, apellidos, domicilio, edad, telefono, alergias } = req.body;
+    const { nombre, apellidos, domicilio, edad, telefono, contraseña, alergias } = req.body;
 
-    const sql = "INSERT INTO usuarios (nombre, apellidos, domicilio, edad, telefono, alergias) VALUES (?, ?, ?, ?, ?, ?)";
-    db.query(sql, [nombre, apellidos, domicilio, edad, telefono, alergias], (err, result) => {
+    const sql = "INSERT INTO Paciente (nombre, apellidos, domicilio, edad, telefono, contraseña, alergias) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    db.query(sql, [nombre, apellidos, domicilio, edad, telefono, contraseña, alergias], (err, result) => {
         if (err) {
             console.error("Error al registrar usuario:", err);
             res.status(500).json({ message: "Error al registrar usuario" });
         } else {
             res.status(200).json({ message: "Usuario registrado con éxito" });
+        }
+    });
+});
+
+//Ruta para iniciar sesion-----------------------------------------------------------------------------------------------------
+app.post("/iniciar_sesion", (req, res) => {
+    const { contraseña } = req.body; // Usamos teléfono como identificador único
+
+    if (!contraseña) {
+        return res.status(400).json({ message: "La contraseña es obligatoria" });
+    }
+
+    const sql = "SELECT * FROM usuarios WHERE contraseña = ?";
+    
+    db.query(sql, [contraseña], (err, result) => {
+        if (err) {
+            console.error("Error al verificar usuario:", err);
+            return res.status(500).json({ message: "Error en el servidor" });
+        }
+
+        if (result.length > 0) {
+            res.status(200).json({ success: true, message: "Usuario encontrado" });
+        } else {
+            res.status(401).json({ success: false, message: "Usuario no registrado" });
         }
     });
 });
