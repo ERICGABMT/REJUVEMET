@@ -40,7 +40,7 @@ db.connect((err) => {
 app.post("/registrar", (req, res) => {
     const { nombre, apellidos, domicilio, edad, telefono, contraseña, alergias } = req.body;
 
-    const sql = "INSERT INTO Paciente (nombre, apellidos, domicilio, edad, telefono, contraseña, alergias) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    const sql = "INSERT INTO Paciente (nombre, apellidos, domicilio, edad, telefono, contraseña, alergias) VALUES (?, ?, ?, ?, ?, ?, ?node)";
     db.query(sql, [nombre, apellidos, domicilio, edad, telefono, contraseña, alergias], (err, result) => {
         if (err) {
             console.error("Error al registrar usuario:", err);
@@ -76,7 +76,7 @@ app.post("/iniciar_sesion", (req, res) => {
 });
 
 // Servidor corriendo en el puerto 8080
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
