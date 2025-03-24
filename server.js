@@ -1,4 +1,10 @@
 require("dotenv").config();
+console.log("DB_HOST:", process.env.DB_HOST);
+console.log("DB_USER:", process.env.DB_USER);
+console.log("DB_NAME:", process.env.DB_NAME);
+console.log("DB_PORT:", process.env.DB_PORT);
+console.log("DB_PASSWORD:", process.env.DB_PASSWORD);
+
 const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
@@ -7,11 +13,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-
+if (!process.env.DB_HOST || !process.env.DB_USER || !process.env.DB_PASSWORD || !process.env.DB_NAME) {
+    console.error("Error: Faltan variables de entorno en el archivo .env");
+    process.exit(1); // Detener ejecución si faltan datos
+}
 
     const db = mysql.createConnection({
         host: process.env.DB_HOST,
-        port: process.env.DB_PORT || 3306,
+        port: process.env.DB_PORT || 3307,
         user: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME

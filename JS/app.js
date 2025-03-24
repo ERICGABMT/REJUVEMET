@@ -1,18 +1,18 @@
-//Aplicaciones bsaicas con JS
-function agregarUsuario(){
+function agregarUsuario() {
     let nombre = document.getElementById("Nombre").value.trim();
-    let apellidos= document.getElementById("Apellidos").value.trim();
+    let apellidos = document.getElementById("Apellidos").value.trim();
     let domicilio = document.getElementById("Domicilio").value.trim();
-    let edad= document.getElementById("Domicilio").value.trim();
-    let telefono = document.getElementById("Domicilio").value.trim();
+    let edad = document.getElementById("Edad").value.trim();
+    let telefono = document.getElementById("Telefono").value.trim();
+    let alergias = document.getElementById("Alergias").value.trim();  // Asegúrate de tener este campo
 
     if (nombre === "" || apellidos === "" || domicilio === "" || edad === "" || telefono === "") {
         alert("Por favor, complete todos los campos.");
         return;
-
     }
-     // Enviar datos al backend
-     fetch("https://api.clever-cloud.com/v2/github/redeploy", {
+
+    // Enviar datos al backend
+    fetch("http://localhost:8080/registrar", {  // Cambia la URL por la correcta
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nombre, apellidos, domicilio, edad, telefono, alergias })
@@ -30,5 +30,4 @@ function agregarUsuario(){
         console.error("Error:", error);
         alert("Hubo un problema con el registro, intenta de nuevo.");
     });
-
-}//END_agregarUsuario
+}
