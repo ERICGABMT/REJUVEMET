@@ -10,11 +10,11 @@ app.use(express.json());
 
 
     const db = mysql.createConnection({
-        host: process.env.DB_HOST || "bvgn6ybckjdhlv5nosbd-mysql.services.clever-cloud.com",
+        host: process.env.DB_HOST,
         port: process.env.DB_PORT || 3306,
-        user: process.env.DB_USER || "u8r5nolzthslbkjq",
-        password: process.env.DB_PASSWORD || "L9IRmSrKXAC2WVpXHmQo",
-        database: process.env.DB_NAME || "bvgn6ybckjdhlv5nosbd"
+        user: process.env.DB_USER,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME
     });
 
 
@@ -45,5 +45,5 @@ app.post("/registrar", (req, res) => {
 // Servidor corriendo en el puerto 8080
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
