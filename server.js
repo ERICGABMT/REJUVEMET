@@ -59,7 +59,7 @@ app.post("/iniciar_sesion", (req, res) => {
         return res.status(400).json({ message: "La contraseña es obligatoria" });
     }
 
-    const sql = "SELECT * FROM usuarios WHERE contraseña = ?";
+    const sql = "SELECT * FROM Paciente WHERE contraseña = ?";
     
     db.query(sql, [contraseña], (err, result) => {
         if (err) {
