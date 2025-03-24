@@ -12,7 +12,7 @@ function agregarUsuario(){
 
     }
      // Enviar datos al backend
-     fetch("http://localhost:3000/registrar", {
+     fetch("https://api.clever-cloud.com/v2/github/redeploy", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ nombre, apellidos, domicilio, edad, telefono, alergias })
