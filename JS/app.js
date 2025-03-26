@@ -4,7 +4,7 @@ function agregarUsuario() {
     let domicilio = document.getElementById("Domicilio").value.trim();
     let edad = document.getElementById("Edad").value.trim();
     let telefono = document.getElementById("Telefono").value.trim();
-    let contraseña = document.getElementById("contraseña").value.trim();  
+    let contraseña = document.getElementById("Contraseña").value.trim();  
     let alergias = document.getElementById("Alergias").value.trim();  
 
     if (nombre === "" || apellidos === "" || domicilio === "" || edad === "" || telefono === "" || contraseña === "") {
@@ -19,10 +19,7 @@ function agregarUsuario() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ nombre, apellidos, domicilio, edad, telefono, contraseña, alergias })
       })
-      .then(response => {
-          console.log("Respuesta del servidor:", response);
-          return response.json();
-      })
+      .then(response => response.json())
       .then(data => {
           console.log("Datos recibidos:", data);
           alert(`Bienvenido: ${nombre}, tu cuenta se registró correctamente.`);
@@ -44,7 +41,7 @@ function agregarUsuario() {
             return;
         }
     
-        fetch("http://localhost:8080/iniciar_sesion", {
+        fetch("http://localhost:8080iniciar_sesion", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ contraseña })

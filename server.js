@@ -75,7 +75,7 @@ app.post("/iniciar_sesion", (req, res) => {
     });
 });
 
-// Servidor corriendo en el puerto 8080
+// Servidor corriendo en el puerto 3000
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
