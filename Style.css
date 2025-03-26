@@ -2,7 +2,7 @@
 
 /*Definimos los colores predertminados */
 :root {
-    --color-primario: #1f37a2;
+    --color-primario: #1a37b5;
     --color-secundario: #FFF9EB;
     --color-terciario: #C4C4C4;
     --color-button: #fe652b;
@@ -95,7 +95,6 @@ body {
     align-items: center;
     padding: 40px 0 0;
 }
-
 
 
 /*Definicion de atributos para el input*/

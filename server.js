@@ -20,7 +20,7 @@ if (!process.env.DB_HOST || !process.env.DB_USER || !process.env.DB_PASSWORD || 
 
     const db = mysql.createConnection({
         host: process.env.DB_HOST,
-        port: process.env.DB_PORT || 3307,
+        port: process.env.DB_PORT || 3306,
         user: process.env.DB_USER,
         password: process.env.DB_PASSWORD,
         database: process.env.DB_NAME
@@ -76,7 +76,7 @@ app.post("/iniciar_sesion", (req, res) => {
 });
 
 // Servidor corriendo en el puerto 8080
-const PORT = process.env.PORT || 7009;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
 });
