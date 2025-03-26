@@ -41,7 +41,7 @@ function agregarUsuario() {
             return;
         }
     
-        fetch("http://localhost:8080iniciar_sesion", {
+        fetch("http://localhost:8080/iniciar_sesion", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ contraseña })
