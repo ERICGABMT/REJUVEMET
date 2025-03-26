@@ -40,7 +40,7 @@ db.connect((err) => {
 app.post("/registrar", (req, res) => {
     const { nombre, apellidos, domicilio, edad, telefono, contraseña, alergias } = req.body;
 
-    const sql = "INSERT INTO Paciente (nombre, apellidos, domicilio, edad, telefono, contraseña, alergias) VALUES (?, ?, ?, ?, ?, ?, ?node)";
+    const sql = "INSERT INTO Paciente (Nombre,Apellidos,Domicilio,Edad,Telefono,Contraseña,Alergias) VALUES (?, ?, ?, ?, ?, ?, ?)";
     db.query(sql, [nombre, apellidos, domicilio, edad, telefono, contraseña, alergias], (err, result) => {
         if (err) {
             console.error("Error al registrar usuario:", err);
