@@ -14,7 +14,7 @@ function agregarUsuario() {
       // Debug: Mostrar datos antes de enviarlos
       console.log("Enviando datos:", { nombre, apellidos, domicilio, edad, telefono, contraseña, alergias });
 
-      fetch("http://localhost:8080/registrar", {
+      fetch("https://api.clever-cloud.com/v2/github/redeploy", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ nombre, apellidos, domicilio, edad, telefono, contraseña, alergias })
@@ -41,7 +41,7 @@ function agregarUsuario() {
             return;
         }
     
-        fetch("http://localhost:8080/iniciar_sesion", {
+        fetch("https://api.clever-cloud.com/v2/github/redeploy", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ contraseña })
